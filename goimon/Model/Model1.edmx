@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="quanlygoimonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Drink">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuantityofFood" Type="int" />
+          <Property Name="PriceofFood" Type="int" />
+          <Property Name="Drink" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuantityofDrink" Type="int" />
+          <Property Name="PriceofDrink" Type="int" />
+          <Property Name="Total" Type="int" />
+          <Property Name="ID_Table" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Menu_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="ID_Table" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="quanlygoimonModelStoreContainer">
+          <EntitySet Name="Drink" EntityType="Self.Drink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Menu_Table" Association="Self.FK_Menu_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="quanlygoimonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Drink">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuantityofFood" Type="Int32" />
+          <Property Name="PriceofFood" Type="Int32" />
+          <Property Name="Drink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuantityofDrink" Type="Int32" />
+          <Property Name="PriceofDrink" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="ID_Table" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Table" Relationship="Self.FK_Menu_Table" FromRole="Menu" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_Menu_Table" FromRole="Table" ToRole="Menu" />
+        </EntityType>
+        <Association Name="FK_Menu_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="ID_Table" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="goimonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Drink" EntityType="Self.Drink" />
+          <EntitySet Name="Food" EntityType="Self.Food" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <AssociationSet Name="FK_Menu_Table" Association="Self.FK_Menu_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="quanlygoimonModelStoreContainer" CdmEntityContainer="goimonEntities">
+          <EntitySetMapping Name="Drink">
+            <EntityTypeMapping TypeName="quanlygoimonModel.Drink">
+              <MappingFragment StoreEntitySet="Drink">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Food">
+            <EntityTypeMapping TypeName="quanlygoimonModel.Food">
+              <MappingFragment StoreEntitySet="Food">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="quanlygoimonModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="QuantityofFood" ColumnName="QuantityofFood" />
+                <ScalarProperty Name="PriceofFood" ColumnName="PriceofFood" />
+                <ScalarProperty Name="Drink" ColumnName="Drink" />
+                <ScalarProperty Name="QuantityofDrink" ColumnName="QuantityofDrink" />
+                <ScalarProperty Name="PriceofDrink" ColumnName="PriceofDrink" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ID_Table" ColumnName="ID_Table" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="quanlygoimonModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

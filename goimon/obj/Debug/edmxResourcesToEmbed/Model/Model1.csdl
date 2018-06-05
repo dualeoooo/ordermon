@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="quanlygoimonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Drink">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Food" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QuantityofFood" Type="Int32" />
+    <Property Name="PriceofFood" Type="Int32" />
+    <Property Name="Drink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QuantityofDrink" Type="Int32" />
+    <Property Name="PriceofDrink" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="ID_Table" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Table" Relationship="Self.FK_Menu_Table" FromRole="Menu" ToRole="Table" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TableName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Menu" Relationship="Self.FK_Menu_Table" FromRole="Table" ToRole="Menu" />
+  </EntityType>
+  <Association Name="FK_Menu_Table">
+    <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="ID_Table" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="goimonEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Drink" EntityType="Self.Drink" />
+    <EntitySet Name="Food" EntityType="Self.Food" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" />
+    <EntitySet Name="Table" EntityType="Self.Table" />
+    <AssociationSet Name="FK_Menu_Table" Association="Self.FK_Menu_Table">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

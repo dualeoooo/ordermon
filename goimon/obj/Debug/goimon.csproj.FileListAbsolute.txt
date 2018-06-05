@@ -1,0 +1,17 @@
+D:\goimon\goimon\obj\Debug\goimon.csprojResolveAssemblyReference.cache
+D:\goimon\goimon\obj\Debug\goimon.Form1.resources
+D:\goimon\goimon\obj\Debug\goimon.Properties.Resources.resources
+D:\goimon\goimon\obj\Debug\goimon.View.Add.resources
+D:\goimon\goimon\obj\Debug\goimon.View.Edit.resources
+D:\goimon\goimon\obj\Debug\goimon.csproj.GenerateResource.cache
+D:\goimon\goimon\obj\Debug\goimon.csproj.CoreCompileInputs.cache
+D:\goimon\goimon\bin\Debug\goimon.exe.config
+D:\goimon\goimon\bin\Debug\goimon.exe
+D:\goimon\goimon\bin\Debug\goimon.pdb
+D:\goimon\goimon\bin\Debug\EntityFramework.dll
+D:\goimon\goimon\bin\Debug\EntityFramework.SqlServer.dll
+D:\goimon\goimon\bin\Debug\EntityFramework.xml
+D:\goimon\goimon\bin\Debug\EntityFramework.SqlServer.xml
+D:\goimon\goimon\obj\Debug\goimon.csproj.CopyComplete
+D:\goimon\goimon\obj\Debug\goimon.exe
+D:\goimon\goimon\obj\Debug\goimon.pdb

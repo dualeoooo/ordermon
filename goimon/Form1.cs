@@ -1,4 +1,5 @@
-﻿using System;
+﻿using goimon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,25 @@ namespace goimon
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,34 +41,9 @@ namespace goimon
             load_form();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var id = (int)dataGridView1.SelectedRows[0].Cells[8].Value;
-            View.Edit frm = new View.Edit(id);
-            frm.ShowDialog();
-            load_form();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                var id = (int)dataGridView1.SelectedRows[0].Cells[8].Value;
-                var db = new quanlygoimonEntities();
-                var menu = db.Menu.Find(id);
-                db.Menu.Remove(menu);
-                db.SaveChanges();
-                load_form();
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            load_form();
-        }
         public void load_form()
         {
-            quanlygoimonEntities db = new quanlygoimonEntities();
+            goimonEntities db = new goimonEntities();
             var ra = db.Menu;
             var rb = db.Table;
             dataGridView1.DataSource = (from a in ra join b in rb on a.ID_Table equals b.ID select new { b.TableName, a.Food, a.QuantityofFood, a.PriceofFood, a.Drink, a.QuantityofDrink, a.PriceofDrink, a.Total, a.ID }).ToList();
@@ -67,6 +59,37 @@ namespace goimon
             dataGridView1.Columns[5].HeaderText = "Số lượng";
             dataGridView1.Columns[6].HeaderText = "Giá";
             dataGridView1.Columns[7].HeaderText = "Tổng cộng";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            load_form();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            var id = (int)dataGridView1.SelectedRows[0].Cells[8].Value;
+            View.Edit frm = new View.Edit(id);
+            frm.ShowDialog();
+            load_form();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                var id = (int)dataGridView1.SelectedRows[0].Cells[8].Value;
+                var db = new goimonEntities();
+                var menu = db.Menu.Find(id);
+                db.Menu.Remove(menu);
+                db.SaveChanges();
+                load_form();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
