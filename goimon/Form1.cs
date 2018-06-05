@@ -21,7 +21,10 @@ namespace goimon
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            var id = (int)dataGridView1.SelectedRows[0].Cells[8].Value;
+            View.Edit frm = new View.Edit(id);
+            frm.ShowDialog();
+            load_form();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
