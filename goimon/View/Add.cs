@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace goimon.View
 {
-    public partial class Edit : Form
+    public partial class Add : Form
     {
-        public Edit()
+        public Add()
         {
             InitializeComponent();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
