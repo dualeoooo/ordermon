@@ -161,6 +161,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\product-image-134857966_250x250%402x.jpg" />
+    <None Include="Resources\1ad56b6274555e07eab45212556bc201.jpg" />
+    <None Include="Resources\maxresdefault.jpg" />
+    <None Include="Resources\anigif_by_qamarilight-dbfasi8.gif" />
+    <None Include="Resources\Meme-Wallpaper-memes-30218751-500-281.jpg" />
     <None Include="Resources\music-player-2951399__340.jpg" />
     <None Include="Resources\R6S_Wallpaper-04_1920x1080.jpg" />
   </ItemGroup>

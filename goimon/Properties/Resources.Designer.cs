@@ -63,9 +63,59 @@ namespace goimon.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1ad56b6274555e07eab45212556bc201 {
+            get {
+                object obj = ResourceManager.GetObject("1ad56b6274555e07eab45212556bc201", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap anigif_by_qamarilight_dbfasi8 {
+            get {
+                object obj = ResourceManager.GetObject("anigif_by_qamarilight-dbfasi8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap maxresdefault {
+            get {
+                object obj = ResourceManager.GetObject("maxresdefault", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Meme_Wallpaper_memes_30218751_500_281 {
+            get {
+                object obj = ResourceManager.GetObject("Meme-Wallpaper-memes-30218751-500-281", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap music_player_2951399__340 {
             get {
                 object obj = ResourceManager.GetObject("music-player-2951399__340", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap product_image_134857966_250x250_2x {
+            get {
+                object obj = ResourceManager.GetObject("product-image-134857966_250x250@2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
