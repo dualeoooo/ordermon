@@ -94,5 +94,20 @@ namespace goimon
         {
 
         }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+               
+                var id = (int)dataGridView1.SelectedRows[0].Cells[8].Value;
+                var db = new goimonEntities();
+                var menu = db.Menu.Find(id);
+                db.Menu.Remove(menu);
+                db.SaveChanges();
+                load_form();
+                MessageBox.Show("Đã thanh toán!");
+            }
+        }
     }
 }
